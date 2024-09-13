@@ -4,21 +4,31 @@ const sequelize = require('../configs/database').sequelize;
 
 const User = sequelize.define('User',
     {
+        userId : {
+            primaryKey : true,
+            type : DataTypes.UUID,
+            defaultValue : DataTypes.UUIDV4
+        },
         firstName: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         lastName: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         emailId: {
+            unique : true,
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
+        },
+        email_verified : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : false
         }
     }
 )
